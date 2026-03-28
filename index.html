@@ -1,0 +1,473 @@
+﻿<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KAISH - Trung tâm Học thuật & Kỹ năng Tiếng Hàn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --kaish-red: #df1f26;
+      --kaish-dark: #1f1f1f;
+      --kaish-cream: #fff4f1;
+      --kaish-accent: #ff6a3d;
+      --kaish-green: #216e53;
+      --kaish-bg: #fffdfc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Be Vietnam Pro", sans-serif;
+      color: var(--kaish-dark);
+      background: var(--kaish-bg);
+      line-height: 1.5;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
+
+    .container {
+      width: min(1150px, 94vw);
+      margin: 0 auto;
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo {
+      width: 110px;
+      height: 54px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex: 0 0 auto;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(31, 44, 94, 0.16);
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: #fff;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .brand p {
+      margin: 0;
+      font-size: .75rem;
+      color: #666;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: .95rem;
+      font-weight: 600;
+    }
+
+    .menu a {
+      color: #222;
+      text-decoration: none;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 20%, #ffd7ce 0%, transparent 35%),
+        radial-gradient(circle at 80% 15%, #ffe7df 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, #ffd8cd 0%, transparent 30%),
+        linear-gradient(120deg, #fff6f3 0%, #ffeae4 55%, #fff8f5 100%);
+      border-bottom: 6px solid #f8d5cd;
+    }
+
+    .flowers {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .35;
+      background-image:
+        radial-gradient(circle at 8% 88%, #ff9b78 0 60px, transparent 64px),
+        radial-gradient(circle at 91% 12%, #f8a48a 0 36px, transparent 40px),
+        radial-gradient(circle at 85% 86%, #8dc5a0 0 44px, transparent 48px),
+        radial-gradient(circle at 12% 12%, #a8d1ba 0 42px, transparent 46px);
+    }
+
+    .hero-wrap {
+      position: relative;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 22px;
+      padding: 30px 0 28px;
+    }
+
+    .student {
+      align-self: end;
+      background: linear-gradient(180deg, #fff, #ffe7df);
+      border: 3px solid #ffc2b3;
+      border-radius: 30px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 18px 40px rgba(190, 90, 56, .17);
+    }
+
+    .student img {
+      width: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+      height: 340px;
+    }
+
+    .student small {
+      color: #a2482a;
+      font-weight: 700;
+    }
+
+    .hero-main h2 {
+      margin: 8px 0 4px;
+      font-size: clamp(2rem, 4.6vw, 4rem);
+      line-height: 1.02;
+      color: #fff;
+      -webkit-text-stroke: 3px #d62917;
+      text-shadow: 0 7px 0 rgba(214, 41, 23, .22);
+      letter-spacing: .5px;
+      font-weight: 900;
+    }
+
+    .hero-main h3 {
+      margin: 0;
+      font-size: clamp(1.7rem, 4vw, 3.3rem);
+      color: #fff;
+      -webkit-text-stroke: 2.5px #d62917;
+      text-shadow: 0 6px 0 rgba(214, 41, 23, .2);
+      font-weight: 900;
+    }
+
+    .deal-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .deal {
+      border: 3px solid #f2b7a8;
+      border-radius: 20px;
+      background: #fff;
+      text-align: center;
+      padding: 12px;
+    }
+
+    .deal .label {
+      color: #ba3c1b;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .deal .num {
+      color: var(--kaish-red);
+      font-size: clamp(2rem, 5vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1;
+      margin: 4px 0;
+    }
+
+    .deal .desc {
+      margin: 0;
+      font-weight: 800;
+      color: #8a311c;
+    }
+
+    .hero-note {
+      margin: 14px 0 0;
+      text-align: center;
+      color: #d82914;
+      font-size: clamp(1rem, 2.8vw, 2rem);
+      font-weight: 900;
+    }
+
+    .hero-cta {
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    .btn-main {
+      border: none;
+      color: #fff;
+      padding: 16px 44px;
+      border-radius: 999px;
+      font-size: 1.9rem;
+      font-weight: 900;
+      cursor: pointer;
+      background: linear-gradient(180deg, #ff6752 0%, #e11f23 85%);
+      box-shadow: 0 10px 28px rgba(223, 31, 38, .36);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(223, 31, 38, .45);
+    }
+
+    .quick-actions {
+      background: linear-gradient(120deg, #cf0000, #eb1a1a);
+      padding: 16px 0;
+      color: #fff;
+      text-align: center;
+    }
+
+    .quick-actions h4 {
+      margin: 0 0 12px;
+      font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .quick-card {
+      background: #fff;
+      color: #b61010;
+      border-radius: 8px;
+      font-weight: 800;
+      padding: 10px;
+      text-decoration: none;
+      border: 2px solid #ffd5d5;
+    }
+
+    section {
+      padding: 58px 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.3rem);
+      margin: 0 0 10px;
+      color: #b9151d;
+    }
+
+    .section-sub {
+      color: #555;
+      margin-top: 0;
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .course {
+      border: 1px solid #f2d8d0;
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(105, 38, 29, 0.08);
+    }
+
+    .course h5 {
+      margin: 0 0 6px;
+      font-size: 1.1rem;
+      color: #9c1919;
+    }
+
+    .course p {
+      margin: 0;
+      color: #444;
+      font-size: 0.95rem;
+    }
+
+    .domain-box {
+      background: linear-gradient(135deg, #fff3f0, #fff);
+      border: 1px solid #ffd6cb;
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .domain-list {
+      margin: 12px 0 0;
+      padding-left: 18px;
+    }
+
+    .domain-list li {
+      margin: 6px 0;
+      font-weight: 700;
+    }
+
+    .footer {
+      background: #191919;
+      color: #f6f6f6;
+      padding: 24px 0;
+      font-size: .92rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .student {
+        max-width: 460px;
+        margin: 0 auto;
+      }
+
+      .menu { display: none; }
+
+      .quick-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .course-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .deal-grid,
+      .quick-grid,
+      .course-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-main {
+        width: 100%;
+        font-size: 1.35rem;
+      }
+
+      section {
+        padding: 42px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#">
+        <div class="logo">
+          <img src="logo-kaish.png" alt="Logo KAISH" />
+        </div>
+        <div>
+          <h1>KAISH - Trung tâm Học thuật & Kỹ năng Tiếng Hàn</h1>
+          <p>Đào tạo TOPIK, giao tiếp, du học và kỹ năng nghề nghiệp</p>
+        </div>
+      </a>
+      <nav class="menu">
+        <a href="#courses">Khóa Học</a>
+        <a href="#about">Giới Thiệu</a>
+        <a href="#schedule">Lịch Khai Giảng</a>
+        <a href="#consult">Tư Vấn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="flowers"></div>
+      <div class="container hero-wrap">
+        <aside class="student">
+          <img src="hero-kaish.jpg" alt="Hình giới thiệu khóa học KAISH" />
+          <small>Giao tiếp hay - TOPIK cầm tay</small>
+        </aside>
+
+        <div class="hero-main">
+          <h2>HỌC TIẾNG HÀN</h2>
+          <h3>CHẲNG LO HỌC PHÍ</h3>
+
+          <div class="deal-grid">
+            <article class="deal">
+              <div class="label">GIẢM</div>
+              <div class="num">58%</div>
+              <p class="desc">HỌC PHÍ TIẾNG HÀN</p>
+            </article>
+            <article class="deal">
+              <div class="label">TẶNG</div>
+              <div class="num">200K</div>
+              <p class="desc">TÀI LIỆU & TEST ĐẦU VÀO</p>
+            </article>
+            <article class="deal">
+              <div class="label">TIẾT KIỆM THÊM</div>
+              <div class="num">600K</div>
+              <p class="desc">KHI ĐĂNG KÝ NHÓM</p>
+            </article>
+          </div>
+
+          <p class="hero-note">Chỉ áp dụng cho 100 học viên đăng ký sớm nhất</p>
+
+          <div class="hero-cta">
+            <button class="btn-main" onclick="alert('KAISH sẽ liên hệ tư vấn trong 5 phút!')">ĐĂNG KÝ NGAY</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-actions" id="consult">
+      <div class="container">
+        <h4>KAISH - Học đúng lộ trình, đạt mục tiêu nhanh</h4>
+        <div class="quick-grid">
+          <a class="quick-card" href="#">Tư vấn khóa học</a>
+          <a class="quick-card" href="#schedule">Lịch khai giảng</a>
+          <a class="quick-card" href="#">Học thử miễn phí</a>
+          <a class="quick-card" href="#courses">Khóa học nổi bật</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="courses">
+      <div class="container">
+        <h2 class="section-title">Các khóa học chính tại KAISH</h2>
+        <p class="section-sub">Thiết kế từ cơ bản đến nâng cao, phù hợp người mới bắt đầu và người cần thi TOPIK.</p>
+        <div class="course-grid">
+          <article class="course">
+            <h5>Tiếng Hàn Giao Tiếp Cơ Bản</h5>
+            <p>Phát âm chuẩn, phản xạ nghe nói, ứng dụng ngay trong đời sống.</p>
+          </article>
+          <article class="course">
+            <h5>Luyện Thi TOPIK I - II</h5>
+            <p>Rèn chiến lược làm bài, chữa đề chi tiết, tăng điểm nhanh theo mục tiêu.</p>
+          </article>
+          <article class="course">
+            <h5>Tiếng Hàn Doanh Nghiệp</h5>
+            <p>Viết email, phỏng vấn, giao tiếp nơi công sở cho người đi làm.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" id="about">
+    <div class="container">
+      <strong>KAISH - Trung tâm Học thuật & Kỹ năng Tiếng Hàn</strong><br>
+      Hotline/Zalo: 0365.142.241 | Email: kaish.korean@gmail.com<br>
+      Địa chỉ: Thành Thái, Quận 10, TP.HCM
+    </div>
+  </footer>
+</body>
+</html>
